@@ -1,5 +1,5 @@
 const generateHtmlTemplate = (options) => {
-	return `
+    return `
     <!doctype html>
     <html lang="en">
     <head>
@@ -8,9 +8,9 @@ const generateHtmlTemplate = (options) => {
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         ${
-					options.style
-						? `<link rel="stylesheet" href="${options.style}">`
-						: `<style>
+            options.style
+                ? `<link rel="stylesheet" href="${options.style}">`
+                : `<style>
     @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@700&display=swap');
 
     ::-webkit-scrollbar {
@@ -74,21 +74,25 @@ const generateHtmlTemplate = (options) => {
         color: #3B82F6;
     }
 </style>`
-				}
+        }
     </head>
     <body>
-        ${options.extname === '.txt' ? `<h1>${options.title || 'Document'}</h1>` : ''}
         ${
-					options.content.map((phrases) => `<p>${phrases}</p>\n`).join('\n') ||
-					''
-				} 
+            options.extname === '.txt'
+                ? `<h1>${options.title || 'Document'}</h1>`
+                : ''
+        }
+        ${
+            options.content.map((paragraph) => `${paragraph}\n`).join('\n') ||
+            ''
+        } 
     </body>
     </html>
     `;
 };
 
 const generateHtmlMenuTemplate = (options) => {
-	return `
+    return `
     <!doctype html>
     <html lang="en">
     <head>
@@ -97,9 +101,9 @@ const generateHtmlMenuTemplate = (options) => {
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         ${
-					options.style
-						? `<link rel="stylesheet" href="${options.style}">`
-						: `<style>
+            options.style
+                ? `<link rel="stylesheet" href="${options.style}">`
+                : `<style>
     @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@700&display=swap');
 
     ::-webkit-scrollbar {
@@ -163,16 +167,15 @@ const generateHtmlMenuTemplate = (options) => {
         color: #3B82F6;
     }
 </style>`
-				}
+        }
     </head>
     <body>
         <h1>Home menu</h1>
         <h2>Summary</h2>
             <ul>
         ${options.routeList
-					.map((route) => `<li><a href='${route.url}'>${route.name}</a></li>`)
-					.join('\n')}
-           
+            .map((route) => `<li><a href='${route.url}'>${route.name}</a></li>`)
+            .join('\n')}
         </ul>
     </body>
     </html>
